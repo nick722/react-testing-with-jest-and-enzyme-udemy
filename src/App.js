@@ -6,7 +6,8 @@ class App extends Component {
   render() {
     return (
       <div data-test="component-app">
-        <h1>Click counter</h1>
+        <h1 data-test="counter-display">The counter is currently</h1>
+        <button data-test="increment-button">Increment counter</button>
       </div>
     );
   }
