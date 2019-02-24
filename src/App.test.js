@@ -2,6 +2,7 @@ import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import App from "./App";
+import Error from "./components/Error";
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
@@ -85,4 +86,8 @@ test("clicking decrement button when counter is at 0 doesn't decrement the count
   // don't decrement the counter
   expect(counterDisplay.text()).toContain(0);
   // todo display an error message saying the counter can't go below zero
+  // expect(wrapper.find(".error").length === 2);
+  const errorMessage = findByTestAttr(wrapper, "error");
+  // expect(wrapper.find(errorMessage)).toExist();
+  expect(wrapper.exists(".error")).to.equal(true);
 });
