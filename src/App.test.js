@@ -74,3 +74,15 @@ test("clicking button decrements counter display", () => {
   const counterDisplay = findByTestAttr(wrapper, "counter-display");
   expect(counterDisplay.text()).toContain(counter - 1);
 });
+
+test("clicking decrement button when counter is at 0 doesn't decrement the counter", () => {
+  const counter = 0;
+  const wrapper = setup(null, { counter });
+  const button = findByTestAttr(wrapper, "decrement-button");
+  button.simulate("click");
+  wrapper.update();
+  const counterDisplay = findByTestAttr(wrapper, "counter-display");
+  // don't decrement the counter
+  expect(counterDisplay.text()).toContain(0);
+  // todo display an error message saying the counter can't go below zero
+});
